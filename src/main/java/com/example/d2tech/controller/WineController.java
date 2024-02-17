@@ -56,10 +56,15 @@ public class WineController {
     private final ReviewRepository reviewRepository;
     private final WineRepository wineRepository;
 
-
     @GetMapping({"/w/{id}"})
     public Wine d(@PathVariable Long id){
         return wineRepository.findById(id).orElseThrow();
+    }
+
+    @GetMapping({"/w"})
+    public List<Wine> all(){
+        final List<Wine> all = wineRepository.findAll();
+        return all;
     }
 
     @GetMapping("/pdb/{id}")
